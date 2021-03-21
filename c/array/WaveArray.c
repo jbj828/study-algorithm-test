@@ -43,6 +43,17 @@ void WaveArray2(int arr[], int size) {
   }
 }
 
+/*
+    Time Complexity : O(nlog(n))
+*/
+void WaveArray3(int arr[], int size) {
+  quickSort(arr, size);
+
+  for (int i = 0; i < size - 1; i += 2) {
+    swap(&arr[i], &arr[i + 1]);
+  }
+}
+
 int main() {
   int arr[LENGTH] = {1, 2, 3, 4, 5, 6};
   WaveArray(arr, LENGTH);
