@@ -39,11 +39,46 @@ void printList(ListNode *head) {
   }
 }
 
+int searchList(ListNode *head, int value) {
+  while (head) {
+    if (head->value == value) {
+      printf("Found %d", value);
+      return 1;
+    }
+    head = head->next;
+  }
+
+  printf("Cannot Find %d", value);
+  return 0;
+}
+
+void deleteFirstNode(ListNode **ptrHead) {
+  ListNode *currNode = *ptrHead;
+  ListNode *nextNode;
+
+  if (currNode == NULL) {
+    return;
+  }
+
+  nextNode = currNode->next;
+  free(currNode);
+  *ptrHead = nextNode;
+}
+
+void deleteNode(ListNode **ptrHead, int delValue) {}
+
 int main() {
   ListNode *head = NULL;
   sortedInsert(&head, 4);
   sortedInsert(&head, 3);
   sortedInsert(&head, 2);
   sortedInsert(&head, 5);
+  printList(head);
+
+  printf("\n");
+  searchList(head, 6);
+
+  printf("\n");
+  deleteFirstNode(&head);
   printList(head);
 }
