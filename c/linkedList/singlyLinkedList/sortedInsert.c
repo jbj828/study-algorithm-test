@@ -65,7 +65,26 @@ void deleteFirstNode(ListNode **ptrHead) {
   *ptrHead = nextNode;
 }
 
-void deleteNode(ListNode **ptrHead, int delValue) {}
+void deleteNode(ListNode **ptrHead, int delValue) {
+  ListNode *currNode = *ptrHead;
+  ListNode *nextNode;
+  if (currNode->value == delValue) {
+    nextNode = currNode->next;
+    *ptrHead = nextNode;
+    free(currNode);
+    return;
+  }
+
+  while (currNode->next->value != delValue) {
+    currNode = currNode->next;
+  }
+
+  nextNode = currNode->next;
+  currNode->next = nextNode->next;
+  free(nextNode);
+  return;
+}
+
 
 int main() {
   ListNode *head = NULL;
@@ -76,9 +95,11 @@ int main() {
   printList(head);
 
   printf("\n");
-  searchList(head, 6);
+  //   searchList(head, 6);
 
   printf("\n");
-  deleteFirstNode(&head);
+  //   deleteFirstNode(&head);
+
+  deleteNode(&head, 5);
   printList(head);
 }
