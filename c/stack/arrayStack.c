@@ -47,14 +47,35 @@ int StackTop(Stack *stk) {
   return value;
 }
 
+void sortedInsert(Stack *stk, int element) {
+  int temp;
+  if (StackIsEmpty(stk) || element > StackTop(stk)) {
+    StackPush(stk, element);
+  } else {
+    temp = StackPop(stk);
+    sortedInsert(stk, element);
+    StackPush(stk, temp);
+  }
+}
+
+void sortStack(Stack *stk) {
+  int temp;
+  if (StackIsEmpty(stk) == 0) {
+    temp = StackPop(stk);
+    sortStack(stk);
+    sortedInsert(stk, temp);
+  }
+}
+
 int main() {
   Stack stk;
   StackInitialize(&stk);
   StackPush(&stk, 1);
   StackPush(&stk, 2);
-  StackPush(&stk, 3);
+  //   StackPush(&stk, 3);
   StackPush(&stk, 4);
   StackPush(&stk, 5);
+  sortedInsert(&stk, 6);
   StackPrint(&stk);
   return 0;
 }
