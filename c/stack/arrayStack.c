@@ -79,6 +79,15 @@ void bottomInsert(Stack *stk, int element) {
   }
 }
 
+void reverseStack(Stack *stk) {
+  int temp;
+  if (StackIsEmpty(stk) == 0) {
+    temp = StackPop(stk);
+    reverseStack(stk);
+    bottomInsert(stk, temp);
+  }
+}
+
 int main() {
   Stack stk;
   StackInitialize(&stk);
@@ -88,7 +97,7 @@ int main() {
   StackPush(&stk, 4);
   StackPush(&stk, 5);
   bottomInsert(&stk, 6);
-
+  reverseStack(&stk);
   StackPrint(&stk);
   return 0;
 }
