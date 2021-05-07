@@ -67,6 +67,18 @@ void sortStack(Stack *stk) {
   }
 }
 
+void bottomInsert(Stack *stk, int element) {
+  int temp;
+
+  if (StackIsEmpty(stk)) {
+    StackPush(stk, element);
+  } else {
+    temp = StackPop(stk);
+    bottomInsert(stk, temp);
+    StackPush(stk, element);
+  }
+}
+
 int main() {
   Stack stk;
   StackInitialize(&stk);
@@ -75,7 +87,8 @@ int main() {
   //   StackPush(&stk, 3);
   StackPush(&stk, 4);
   StackPush(&stk, 5);
-  sortedInsert(&stk, 6);
+  bottomInsert(&stk, 6);
+
   StackPrint(&stk);
   return 0;
 }
