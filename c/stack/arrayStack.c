@@ -88,6 +88,33 @@ void reverseStack(Stack *stk) {
   }
 }
 
+// 괄호들의 짝이 맞으면 1 아니면 0
+int isBalancedParenthesis(char *expn, int size) {
+  Stack *stk;
+  StackInitialize(stk);
+  char ch;
+  for (int i = 0; i < size; i++) {
+    ch = expn[i];
+    if (ch == '{' || ch == '[' || ch == '(') {
+      StackPush(stk, ch);
+    } else if (ch == '}') {
+      if (StackPop(stk) != '{') {
+        return 0;
+      }
+    } else if (ch == ']') {
+      if (StackPop(stk) != '[') {
+        return 0;
+      }
+    } else if (ch == ')') {
+      if (StackPop(stk) != '(') {
+        return 0;
+      }
+    }
+  }
+
+  return (StackSize(stk) == 0);
+}
+
 int main() {
   Stack stk;
   StackInitialize(&stk);
