@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_CAPACITY 30
 
@@ -115,16 +116,66 @@ int isBalancedParenthesis(char *expn, int size) {
   return (StackSize(stk) == 0);
 }
 
+int maxDepthParenthesis(char *expn, int size) {
+  int maxDepth = 0;
+  int tempDepth = 0;
+
+  Stack *stk;
+  StackInitialize(stk);
+
+  for (int i = 0; i < size; i++) {
+    if (expn[i] == '(') {
+      StackPush(stk, expn[i]);
+      tempDepth++;
+    } else if (expn[i] == ')') {
+      StackPop(stk);
+      tempDepth--;
+    }
+    if (tempDepth > maxDepth) {
+      maxDepth = tempDepth;
+    }
+  }
+  return maxDepth;
+}
+
+int longestContBalParen(char *string, int size) {
+  int maxDepth = 0;
+  int tempDepth = 0;
+
+  Stack *stk;
+  StackInitialize(stk);
+
+  for (int i = 0; i < size; i++) {
+    if (expn[i] == '(') {
+      StackPush(stk, expn[i]);
+      tempDepth++;
+    } else if (expn[i] == ')') {
+      StackPop(stk);
+      tempDepth--;
+    }
+    if (tempDepth > maxDepth) {
+      maxDepth = tempDepth;
+    }
+  }
+  return maxDepth * 2;
+}
+
 int main() {
-  Stack stk;
-  StackInitialize(&stk);
-  StackPush(&stk, 1);
-  StackPush(&stk, 2);
-  //   StackPush(&stk, 3);
-  StackPush(&stk, 4);
-  StackPush(&stk, 5);
-  bottomInsert(&stk, 6);
-  reverseStack(&stk);
-  StackPrint(&stk);
+  // Stack stk;
+  // StackInitialize(&stk);
+  // StackPush(&stk, 1);
+  // StackPush(&stk, 2);
+  // //   StackPush(&stk, 3);
+  // StackPush(&stk, 4);
+  // StackPush(&stk, 5);
+  // bottomInsert(&stk, 6);
+  // reverseStack(&stk);
+  // StackPrint(&stk);
+
+  printf("\n");
+
+  char *expn = "(())((()))";
+  int length = strlen(expn);
+  maxDepthParenthesis(expn, length);
   return 0;
 }
