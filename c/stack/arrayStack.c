@@ -146,10 +146,10 @@ int longestContBalParen(char *string, int size) {
   StackInitialize(stk);
 
   for (int i = 0; i < size; i++) {
-    if (expn[i] == '(') {
-      StackPush(stk, expn[i]);
+    if (string[i] == '(') {
+      StackPush(stk, string[i]);
       tempDepth++;
-    } else if (expn[i] == ')') {
+    } else if (string[i] == ')') {
       StackPop(stk);
       tempDepth--;
     }
