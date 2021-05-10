@@ -50,6 +50,25 @@ void printInOrder(treeNode *root) {
   }
 }
 
+void printBredthFirst(treeNode *root) {
+  Queue *que;
+  QueueInitialize(que);
+  treeNode *temp = NULL;
+  if (root != NULL) {
+    QueueAdd(que, (int)root);
+  }
+  while (QueueSize(que) != 0) {
+    temp = (treeNode *)QueueRemove(que);
+    printf("%d ", temp->value);
+    if (temp->lChild != NULL) {
+      QueueAdd(que, (int)temp->lChild);
+    }
+    if (temp->rChild != NULL) {
+      QueueAdd(que, (int)temp->rChild);
+    }
+  }
+}
+
 int main() {
   int arr[] = {6, 4, 8, 2, 5, 7, 9, 1, 3};
   treeNode *t = levelOrderBinaryTree(arr, sizeof(arr) / sizeof(int));
