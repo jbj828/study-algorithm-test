@@ -29,6 +29,7 @@ var maxDepth = function (root) {
 };
 
 function maxDepthHandler(root, count) {
+  // 종료조건은 leaf node에 자식이 더 이상 없을 때이다. 이때 count 를 반환하면 된다.
   if (!root.left && !root.right) {
     return count;
   }
