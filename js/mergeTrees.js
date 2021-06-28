@@ -13,7 +13,7 @@
  */
 var mergeTrees = function (root1, root2) {
   if (root1 && root2) {
-    const newNode = new TreeNode(root1.val + root2.val);
+    const newNode = new TreeNode(root1q.val + root2.val);
     newNode.left = mergeTrees(root1.left, root2.left);
     newNode.right = mergeTrees(root1.right, root2.right);
 
