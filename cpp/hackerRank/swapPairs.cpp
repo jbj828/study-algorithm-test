@@ -22,7 +22,7 @@ struct ListNode {
 class Solution {
  public:
   ListNode* swapPairs(ListNode* head) {
-    if (head == nullptr || head->next == nullptr) return head;
+    if (!head || !head->next) return head;
 
     ListNode* curr = head;
     ListNode* prev = nullptr;
