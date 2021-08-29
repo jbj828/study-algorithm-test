@@ -1,7 +1,0 @@
-{
-  "files.associations": {
-    "__nullptr": "cpp",
-    "string": "cpp",
-    "ostream": "cpp"
-  }
-}
