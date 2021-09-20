@@ -11,8 +11,7 @@ class Solution {
     int pos = 0;
     for (int i = 0; i < t.size(); i++) {
       if (t.at(i) == s.at(pos)) {
-        if (pos == s.size() - 1) return true;
-        pos++;
+        if (pos++ == s.size() - 1) return true;
       }
     }
     return false;
